@@ -6,15 +6,11 @@ repositories {
 }
 
 configurations {
-	optional {
-		transitive = false
-		visible = false
-	}
-	compile.extendsFrom optional
-}
-
-configurations.optional.allDependencies.all {
-	dep -> configurations.default.exclude(group: dep.group, module: dep.name)
+	optional
+	compileClasspath.extendsFrom(optional)
+	runtimeClasspath.extendsFrom(optional)
+	testCompileClasspath.extendsFrom(optional)
+	testRuntimeClasspath.extendsFrom(optional)
 }
 
 dependencies {
