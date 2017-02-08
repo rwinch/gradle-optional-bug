@@ -1,0 +1,22 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+repositories {
+	mavenCentral()
+}
+
+configurations {
+	optional {
+		transitive = false
+		visible = false
+	}
+	compile.extendsFrom optional
+}
+
+configurations.optional.allDependencies.all {
+	dep -> configurations.default.exclude(group: dep.group, module: dep.name)
+}
+
+dependencies {
+	optional 'ch.qos.logback:logback-classic:1.1.10'
+}

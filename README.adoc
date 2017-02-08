@@ -1,0 +1,12 @@
+Updating from Gradle 3.3 to Gradle 3.4-rc-1 or 3.4-rc-2 appears to break optional dependencies.
+
+The project `has-optional` has a non-trasitive dependency declared on it.
+The project `uses-has-optional` has a compile dependency on `has-optional`.
+If `uses-has-optional` leverages the optional dependency it fails (as expected) with Gradle 3.3.
+If `uses-has-optional` leverages the optional dependency it is able to use the optional dependency (not expected) with Gradle 3.4-rc-1 and 3.4-rc2 (see the two branches).
+
+To test the behavior run in the `master` (gradle 3.3), `gradle-3.4-rc-1`, and `gradle-3.4-rc-2` branches:
+
+```
+./gradlew build
+```
