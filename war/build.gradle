@@ -4,15 +4,6 @@ dependencies {
 	compile project(':has-optional')
 }
 
-FileCollection runtimeClasspath = project.getConvention().getPlugin(JavaPluginConvention.class)
-                                .getSourceSets().getByName(SourceSet.MAIN_SOURCE_SET_NAME).getRuntimeClasspath();
-
-project.sourceSets.main.runtimeClasspath.each { println it }
-
-//war.doFirst {
-//	war.classpath.each { println it }
-//}
-
 task verifyWar(dependsOn: 'assemble') {
 	doLast {
 		zipTree(war.archivePath).each { 
