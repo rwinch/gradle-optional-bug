@@ -1,16 +1,21 @@
+buildscript {
+	repositories {
+		maven { url 'https://repo.spring.io/plugins-release/' }
+	}
+	dependencies {
+		classpath 'org.springframework.build.gradle:propdeps-plugin:0.0.7'
+	}
+}
+
 apply plugin: 'java'
 apply plugin: 'eclipse'
+apply plugin: 'propdeps'
+apply plugin: 'propdeps-maven'
+apply plugin: 'propdeps-idea'
+apply plugin: 'propdeps-eclipse'
 
 repositories {
 	mavenCentral()
-}
-
-configurations {
-	optional
-	compileClasspath.extendsFrom(optional)
-	runtimeClasspath.extendsFrom(optional)
-	testCompileClasspath.extendsFrom(optional)
-	testRuntimeClasspath.extendsFrom(optional)
 }
 
 dependencies {
