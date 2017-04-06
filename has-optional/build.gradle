@@ -1,17 +1,14 @@
-apply plugin: 'java'
-
-configurations {
-	optional
-	compileClasspath.extendsFrom(optional)
-	runtimeClasspath.extendsFrom(optional)
-	testCompileClasspath.extendsFrom(optional)
-	testRuntimeClasspath.extendsFrom(optional)
+plugins {
+	id 'nebula.optional-base' version '3.0.3' // if you want optional-base
+	id 'nebula.provided-base' version '3.0.3' // if you want provided-base
 }
+
+apply plugin: 'java'
 
 repositories {
 	mavenCentral()
 }
 
 dependencies {
-	optional 'ch.qos.logback:logback-classic:1.1.10'
+	compile 'ch.qos.logback:logback-classic:1.1.10', optional
 }
